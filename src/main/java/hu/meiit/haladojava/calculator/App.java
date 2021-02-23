@@ -1,13 +1,18 @@
-package hu.meiit.haladojava;
+package hu.meiit.haladojava.calculator;
 
-/**
- * Hello world!
- *
- */
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        hu.meiit.haladojava.calculator.View view = new View();
+        try {
+            Expression expression = new Expression(view.readExpression());
+            double result=expression.calculate();
+            view.writeResult(result);
+
+        }catch(Exception e) {
+            view.writeMessage("-");
+        }
+
     }
 }
